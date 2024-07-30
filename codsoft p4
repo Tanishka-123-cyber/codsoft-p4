@@ -1,0 +1,44 @@
+//project 4
+class ToDoListManager:
+    def __init__(self):
+        self.tasks = []
+
+    def add_task(self, task):
+        self.tasks.append({'task': task, 'completed': False})
+        print(f"Task '{task}' added.")
+
+    def view_tasks(self):
+        if not self.tasks:
+            print("No tasks in the list.")
+            return
+        print("To-Do List:")
+        for idx, task in enumerate(self.tasks, 1):
+            status = "Completed" if task['completed'] else "Pending"
+            print(f"{idx}. {task['task']} [{status}]")
+
+    def mark_task_completed(self, task_number):
+        try:
+            self.tasks[task_number - 1]['completed'] = True
+            print(f"Task '{self.tasks[task_number - 1]['task']}' marked as completed.")
+        except IndexError:
+            print("Invalid task number.")
+
+    def remove_task(self, task_number):
+        try:
+            removed_task = self.tasks.pop(task_number - 1)
+            print(f"Task '{removed_task['task']}' removed.")
+        except IndexError:
+            print("Invalid task number.")
+
+    def show_menu(self):
+        print("\nTo-Do List Manager")
+        print("1. Add Task")
+        print("2. View Tasks")
+        print("3. Mark Task as Completed")
+        print("4. Remove Task")
+        print("5. Exit")
+
+    def run(self):
+        while True:
+            self.show_menu()
+            choi
